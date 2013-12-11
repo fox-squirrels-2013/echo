@@ -1,0 +1,24 @@
+{
+  "name": "echo",
+  "subdomain": "dbc-echo",
+  "domains": [
+    "dbc-echo.herokuapp.com"
+  ],  
+  "version": "0.1.0",
+  "description": "Simple Node.js Express app to echo back the query string as JSON.",
+  "main": "server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": "https://github.com/jeffreywescott/echo.git",
+  "author": "Jeffrey Wescott",
+  "dependencies": {
+    "express": "3.2.3"
+  },
+  "license": "MIT",
+  "subdomain": "dbc-echo",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
