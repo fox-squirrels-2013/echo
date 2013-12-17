@@ -35,8 +35,10 @@
       width: 60px;
       font-weight: bold;
     }
+    fieldset {
+      border: none;
+    }
     </style>
-
   </head>
 
   <body>
@@ -56,15 +58,24 @@
     <script type="text/template" id="user-form">
       <h2>Edit User</h2>
       <form class="user-form">
-        <label for="name">Name</label>
-        <input type="text" name="name" placeholder="e.g., Ima Crackhead">
-        <br>
-        <label for="age">Age</label>
-        <input type="number" name="age" min="0" max="200">
-        <br>
-        <label for="sex">Sex</label>
-        <input type="radio" name="sex" value="M">Male
-        <input type="radio" name="sex" value="F">Female
+        <fieldset>
+          <span class="icon"></span>
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="e.g., Ima Crackhead">
+        </fieldset>
+
+        <fieldset>
+          <span class="icon"></span>
+          <label for="age">Age</label>
+          <input type="number" name="age" min="0" max="200">
+        </fieldset>
+
+        <fieldset>
+          <span class="icon"></span>
+          <label for="sex">Sex</label>
+          <input type="radio" name="sex" value="M">Male
+          <input type="radio" name="sex" value="F">Female
+        </fieldset>
       </form>
     </script>
 
