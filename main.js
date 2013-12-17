@@ -1,8 +1,23 @@
+var UserFuncs = {
+  isMale: function() { if (this.sex === 'M') return true; return false },
+  isFemale: function() { if (this.sex === 'F') return true; return false }
+}
+
 var UsersController = {
   init: function() {
     $('.container').on('click', '.user-list a', this.getAndRenderUserForm.bind(this))
     // TODO: bind additional event(s) to handle partial updates
+    this.compileTemplates()
     this.getAndRenderUsers()
+  },
+
+  compileTemplates: function() {
+    var templateIds = ['user-form', 'user-item']
+    this._templates = []
+    for (var i in templateIds) {
+      var source = $("#" + templateIds[i]).html()
+      this._templates[templateIds[i]] = Handlebars.compile(source)
+    }
   },
 
   getAndRenderUsers: function() {
@@ -16,9 +31,8 @@ var UsersController = {
   },
 
   renderUserLink: function(user) {
-    var $userLink = $($('#user-link').html())
-    $userLink.find('a').attr('href', '/users/' + user.id).data('id', user.id).html(user.name)
-    $('.user-list').append($userLink)
+    var template = this._templates['user-item']
+    $('.user-list').append(template(user))
   },
 
   getAndRenderUserForm: function(e) {
@@ -28,13 +42,10 @@ var UsersController = {
   },
 
   renderUserForm: function(user) {
-    var $userForm = $($('#user-form').html())
-    // we'll use PATCH when we submit via AJAX, but browser needs POST
-    $userForm.attr('action', '/users/' + user.id).attr('method', 'post')
-    $userForm.find('input[name=name]').val(user.name)
-    $userForm.find('input[name=age]').val(parseInt(user.age))
-    $userForm.find('input[name=sex][value='+user.sex+']').attr('checked', true)
-    $('.edit-area').html('').append($userForm)
+    user.isMale = UserFuncs.isMale
+    user.isFemale = UserFuncs.isFemale
+    var template = this._templates['user-form']
+    $('.edit-area').html('').append(template(user))
   },
 
   patchUser: function(e) {

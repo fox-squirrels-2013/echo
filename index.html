@@ -51,36 +51,37 @@
       </div>
     </div>
 
-    <script type="text/template" id="user-link">
-      <li><a class="user-link"></a></li>
+    <script type="text/x-handlebars-template" id="user-item">
+      <li><a href="/users/{{ id }}" class="user-link">{{ name }}</a></li>
     </script>
 
-    <script type="text/template" id="user-form">
+    <script type="text/x-handlebars-template" id="user-form">
       <h2>Edit User</h2>
-      <form class="user-form">
+      <form class="user-form" action="/users/{{ id }}">
         <fieldset>
           <span class="icon"></span>
           <label for="name">Name</label>
-          <input type="text" name="name" placeholder="e.g., Ima Crackhead">
+          <input type="text" name="name" placeholder="e.g., Ima Crackhead" value="{{ name }}">
         </fieldset>
 
         <fieldset>
           <span class="icon"></span>
           <label for="age">Age</label>
-          <input type="number" name="age" min="0" max="200">
+          <input type="number" name="age" min="0" max="200" value="{{ age }}">
         </fieldset>
 
         <fieldset>
           <span class="icon"></span>
           <label for="sex">Sex</label>
-          <input type="radio" name="sex" value="M">Male
-          <input type="radio" name="sex" value="F">Female
+          <input type="radio" name="sex" value="M" {{#if isMale}}checked{{/if}}>Male
+          <input type="radio" name="sex" value="F" {{#if isFemale}}checked{{/if}}>Female
         </fieldset>
       </form>
     </script>
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
     <script src="/main.js"></script>
 
   </body>
