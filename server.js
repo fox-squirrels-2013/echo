@@ -51,6 +51,7 @@ function updateUser(req, res) {
     userNotFound(req, res, userId)
   } else {
     for (var k in req.body) {
+      console.log("Updating user " + userId + "'s " + k + " to " + req.body[k])
       Users[userId][k] = req.body[k]
     }
     var body = JSON.stringify(Users[userId])
