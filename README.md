@@ -1,8 +1,7 @@
 # Echo Server
 
-Simple Node.js Express app to echo back the query string as JSON.
+Simple Node.js Express app for lecturing phase 4.
 
 ## Agenda
 
-- use simple AJAX to demonstrate code organization
-- refactor student version of quizzes thick client
+- Use HTTP PATCH, AJAX, and JavaScript+jQuery to Implement Forms that Automatically Save
