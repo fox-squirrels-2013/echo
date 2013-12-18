@@ -31,6 +31,14 @@ function clientConnect(socket) {
   checkSFWeatherAndUpdateClients()
 }
 
+// random messaging to the socket.io clients
+periodicallySendRandomNumberToClients()
+function periodicallySendRandomNumberToClients() {
+  var randomNumber = Math.floor(Math.random()*10+1)
+  io.sockets.emit('random-number', randomNumber)
+
+  setTimeout(periodicallySendRandomNumberToClients, 1000)
+}
 
 // keep calling the weather API to update the current temperature
 if (!process.env.WWO_API_KEY) {

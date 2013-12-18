@@ -2,7 +2,21 @@
 
 Simple Node.js Express app to echo back the query string as JSON.
 
+
+## Setup
+
+To run:
+
+```
+$ npm install -g nodemon
+$ npm install
+$ nodemon server.js
+```
+
 ## Agenda
 
-- use simple AJAX to demonstrate code organization
-- refactor student version of quizzes thick client
+- functions as first-class objects  x
+- callbacks  x
+- asynchronous programming
+- promises
+- socket.io
