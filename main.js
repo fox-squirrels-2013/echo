@@ -6,13 +6,13 @@ var UserFuncs = {
 var UsersController = {
   init: function() {
     $('.container').on('click', '.user-list a', this.getAndRenderUserForm.bind(this))
-    // TODO: bind additional event(s) to handle partial updates
+    $('.container').on('change', '.user-form input', this.patchUser.bind(this))
     this.compileTemplates()
     this.getAndRenderUsers()
   },
 
   compileTemplates: function() {
-    var templateIds = ['user-form', 'user-item']
+    var templateIds = ['user-form', 'user-item', 'icon-success', 'icon-failure']
     this._templates = []
     for (var i in templateIds) {
       var source = $("#" + templateIds[i]).html()
@@ -49,7 +49,31 @@ var UsersController = {
   },
 
   patchUser: function(e) {
-    // TODO: implement the code to update the user on the backend
+    var inputToUpdate = {}
+    inputToUpdate[$(e.target).attr('name')] = $(e.target).val()
+    var form = $(e.target).closest('form')
+
+    var self = this
+
+    $.ajax({
+      type: 'patch',
+      url: form.attr('action'),
+      data: inputToUpdate
+    }).done(function(data) {
+      if (e.target.name === 'name') {
+        var anchor = $('a[href="' + form.attr('action') + '"]')
+        anchor.text(data.name)
+      }
+      var template = self._templates['icon-success']
+      var $icon = $(template({}))
+      $(e.target).siblings('.icon').html('').append($icon)
+      $icon.fadeOut(750)
+    }).fail(function (xhr) {
+      var template = self._templates['icon-failure']
+      var $icon = $(template({}))
+      $(e.target).siblings('.icon').html('').append($icon)
+      $icon.fadeOut(750)
+    })
   }
 }
 

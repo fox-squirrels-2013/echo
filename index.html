@@ -21,8 +21,8 @@
       min-height: 1000px;
     }
     .container {
-      padding-top: 50px;
-      width: 900px;
+      padding-top: 10px;
+      width: 700px;
       margin: 0 auto;
       font-size: 14pt;
     }
@@ -37,6 +37,16 @@
     }
     fieldset {
       border: none;
+    }
+    span.icon {
+      display: inline-block;
+      width: 2em;
+    }
+    i.fa-check {
+      color: green;
+    }
+    i.fa-times {
+      color: red;
     }
     </style>
   </head>
@@ -77,6 +87,14 @@
           <input type="radio" name="sex" value="F" {{#if isFemale}}checked{{/if}}>Female
         </fieldset>
       </form>
+    </script>
+
+    <script type="text/x-handlebars-template" id="icon-success">
+      <i class="fa fa-check"></i>
+    </script>
+
+    <script type="text/x-handlebars-template" id="icon-failure">
+      <i class="fa fa-times"></i>
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
