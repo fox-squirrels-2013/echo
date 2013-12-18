@@ -14,7 +14,9 @@
   "repository": "https://github.com/jeffreywescott/echo.git",
   "author": "Jeffrey Wescott",
   "dependencies": {
-    "express": "3.2.3"
+    "express": "3.2.3",
+    "socket.io": "0.9.16",
+    "request": "2.30.0"
   },
   "license": "MIT",
   "subdomain": "dbc-echo",
